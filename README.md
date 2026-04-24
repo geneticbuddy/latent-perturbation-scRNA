@@ -1,105 +1,63 @@
-# Latent Perturbation scRNA Analysis
+# Latent Space Perturbation Analysis of Gene Effects in Single-Cell RNA-seq
 
 This repository contains code for the manuscript:
 
-"Latent Space Perturbation Analysis Reveals Approximate Additive Gene Effects in Single-Cell Transcriptomic Dynamics"
+**"Latent Space Perturbation Analysis Reveals Approximate Additive Gene Effects in Single-Cell Transcriptomic Dynamics"**
 
 ---
 
 ## Overview
 
-This project analyzes how gene perturbations influence cellular states in latent space using single-cell RNA sequencing data. The framework evaluates whether gene effects combine additively when projected into a learned latent representation.
+This framework analyzes how gene perturbations influence cellular states in latent space using single-cell RNA sequencing data. By projecting gene expression profiles into a learned low-dimensional representation, we quantify how individual and combined perturbations shift cellular embeddings.
+
+The central objective is to evaluate whether gene effects exhibit **approximate additivity** in latent space while preserving biologically realistic perturbation regimes.
 
 ---
 
 ## Scientific Contribution
 
-This repository implements a latent space perturbation framework to quantify how gene expression changes influence cellular state representations. 
+This work introduces a latent space perturbation framework that enables quantitative evaluation of gene effects using **controlled partial perturbations (50% expression scaling)**.
 
-Unlike traditional approaches that rely on full gene knockouts or static embeddings, this method uses controlled partial perturbations (50% expression scaling) to evaluate approximate additivity of gene effects while preserving biologically realistic expression regimes.
+Unlike traditional approaches that rely on:
+- full gene knockouts, or  
+- static embeddings  
 
----
+this method:
 
-## Dataset
+- preserves biologically plausible expression levels  
+- avoids out-of-distribution artifacts  
+- enables direct comparison between expected (additive) and observed (combined) perturbation effects  
 
-This analysis uses the Scanpy `pbmc68k_reduced` dataset, a widely used benchmark dataset for single-cell RNA-seq analysis.
-
----
-
-## Requirements
-
-Install dependencies:
-
-pip install scanpy numpy matplotlib torch
+This provides a practical approach for probing gene interactions in single-cell systems.
 
 ---
 
-## Environment
+## Data Source
 
-Tested with Python 3.10+
+This analysis uses the Scanpy dataset:
 
----
+- `pbmc68k_reduced`
 
-## Pipeline Description
-
-- `analysis_pipeline.py`  
-  Builds the latent representation and computes baseline embeddings.
-
-- `figure1.py`  
-  Visualizes latent space perturbation directions for individual and combined gene effects.
-
-- `figure2.py`  
-  Quantifies additivity by comparing expected and observed perturbation magnitudes.
-
-- `figureS1.py`  
-  Displays the distribution of cells along pseudotime.
+This dataset is a widely used benchmark for single-cell RNA-seq analysis and is included directly within Scanpy, requiring no external downloads.
 
 ---
 
-## Execution
+## Method Overview
 
-To reproduce all results and figures, run:
+The pipeline consists of four stages:
 
-python run_all.py
+1. **Latent Representation Construction**  
+   Gene expression data are embedded into a low-dimensional latent space using a neural encoder.
 
-This will execute:
+2. **Pseudotime Inference**  
+   Cellular progression is modeled using diffusion pseudotime (DPT).
 
-1. analysis_pipeline.py  
-2. figure1.py  
-3. figure2.py  
-4. figureS1.py  
+3. **Perturbation Simulation**  
+   Gene perturbations are simulated via partial expression scaling (50%).
 
----
-
-## Expected Results
-
-Running the pipeline will generate:
-
-- Figure1.png (latent perturbation visualization)  
-- Figure2.png (additivity validation)  
-- FigureS1.png (pseudotime distribution)  
+4. **Additivity Evaluation**  
+   Expected perturbation effects (vector sums) are compared to observed combined perturbations.
 
 ---
 
-## Reproducibility
-
-All results are fully reproducible using the provided scripts and the Scanpy dataset. No external data download is required.
-
----
-
-## Notes
-
-- Figure 2 values are computed directly from the latent perturbation pipeline and are not hardcoded.
-- Gene perturbations are simulated using partial scaling to avoid out-of-distribution artifacts.
-
----
-
-## Code Availability
-
-All analysis code used in the associated manuscript is publicly available in this repository.
-
----
-
-## Author
-
-Avery Hernandez
+## Repository Structure
