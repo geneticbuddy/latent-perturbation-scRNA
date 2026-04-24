@@ -4,8 +4,11 @@ This repository contains code for the manuscript:
 
 "Latent Space Perturbation Analysis Reveals Approximate Additive Gene Effects in Single-Cell Transcriptomic Dynamics"
 
+## Overview
+This project analyzes gene perturbations in latent space using single-cell RNA-seq data and evaluates approximate additivity of gene effects.
+
 ## Dataset
-PBMC dataset (Scanpy pbmc68k_reduced)
+- PBMC dataset (Scanpy: pbmc68k_reduced)
 
 ## Requirements
 - scanpy
@@ -13,18 +16,24 @@ PBMC dataset (Scanpy pbmc68k_reduced)
 - matplotlib
 - torch
 
-## How to run
+Install dependencies:
+pip install scanpy numpy matplotlib torch
 
-Run each script:
+## Execution Order
+Run scripts in the following order:
 
-python analysis_pipeline.py  
-python figure1.py  
-python figure2.py  
-python figureS1.py  
+1. analysis_pipeline.py
+2. figure1.py
+3. figure2.py
+3. figureS1.py
 
-## Figures
-- Figure 1: Latent perturbation
-- Figure 2: Additivity validation
-- Figure S1: Pseudotime distribution
-- ## Reproducibility
-All figures can be reproduced directly by running the provided scripts using the Scanpy pbmc68k_reduced dataset.
+## Outputs
+- Figure1.png
+- Figure2.png
+- FigureS1.png
+
+## Reproducibility
+All figures can be reproduced directly using the provided scripts and the Scanpy dataset.
+
+## Author
+Avery Hernandez
