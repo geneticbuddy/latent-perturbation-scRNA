@@ -1,3 +1,5 @@
+# NOTE:
+# Values derived from latent perturbation analysis in analysis_pipeline.py
 import numpy as np
 import matplotlib.pyplot as plt
 
