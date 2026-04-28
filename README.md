@@ -20,3 +20,10 @@ Clone the repository and install dependencies:
 git clone https://github.com/geneticbuddy/latent-perturbation-scRNA.git
 cd latent-perturbation-scRNA
 pip install -r requirements.txt
+
+
+## Run the Demo Notebook
+
+Click below to run interactively in Google Colab:
+
+https://colab.research.google.com/github/geneticbuddy/latent-perturbation-scRNA/blob/main/demo_scanpy_pipeline.ipynb
